@@ -40,7 +40,7 @@ namespace Lista_Doblemente_Enlazada
             if (n.Dato < head.Dato)
             {
                 n.Siguiente = head;
-                n.Anterior = head.Anterior;
+                n.Anterior = null;
                 head = n;
                 return;
             }
