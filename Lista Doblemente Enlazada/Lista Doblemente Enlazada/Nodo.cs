@@ -8,10 +8,11 @@ namespace Lista_Doblemente_Enlazada
 {
     class Nodo
     {
-        // declaramos las variables de clase Nodo
+        
         private int dato;
         private Nodo siguiente;
         private Nodo anterior;
+
         public int Dato
         {
             get { return dato; }

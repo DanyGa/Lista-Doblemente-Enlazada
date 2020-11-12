@@ -159,7 +159,7 @@ namespace Lista_Doblemente_Enlazada
             }
             return false;
         }
-        //checar
+ 
         public int ContarNodos()
         {
             int contador = 0;
