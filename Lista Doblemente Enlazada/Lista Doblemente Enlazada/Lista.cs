@@ -44,7 +44,18 @@ namespace Lista_Doblemente_Enlazada
                 head = n;
                 return;
             }
+
             Nodo h = head;
+
+            while (h.Anterior != null)
+            {
+                if (h.Anterior.Dato > n.Dato)
+                {
+                    break;
+                }
+                h = h.Anterior; //regresa al nodo anterior
+            }           
+
             while (h.Siguiente != null)
             {
                 if (h.Siguiente.Dato > n.Dato)
@@ -61,6 +72,7 @@ namespace Lista_Doblemente_Enlazada
                 return;
             }
             h.Siguiente = n;
+           
         }
         //checar por que es muy parecida a la de simple AQUIIIIIII
         public void Eliminar(int dato)
