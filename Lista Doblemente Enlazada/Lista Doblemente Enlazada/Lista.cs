@@ -47,23 +47,6 @@ namespace Lista_Doblemente_Enlazada
 
             Nodo h = head;
 
-            while (h.Anterior != null)
-            {
-                if (h.Anterior.Dato > n.Dato)
-                {
-                    break;
-                }
-                h = h.Anterior; //regresa al nodo anterior
-            }
-
-            if (h.Anterior != null)
-            {
-                n.Anterior = h.Anterior;
-                h.Anterior = n;
-                return;
-            }
-            h.Anterior = n;
-
             while (h.Siguiente != null)
             {
                 if (h.Siguiente.Dato > n.Dato)
@@ -73,14 +56,15 @@ namespace Lista_Doblemente_Enlazada
                 h = h.Siguiente; //avanza al siguiente nodo
             }
 
+                n.Siguiente = h.Siguiente;
+                n.Anterior = h;
             if (h.Siguiente != null)
             {
-                n.Siguiente = h.Siguiente;
+                 h.Siguiente.Anterior = n;
+            }              
                 h.Siguiente = n;
-                return;
-            }
-            h.Siguiente = n;
-           
+                
+                return;           
         }
 
         public void Eliminar(int dato)
@@ -88,28 +72,20 @@ namespace Lista_Doblemente_Enlazada
             if (head != null)
             {
                 if (head.Dato == dato)
-                {
-                    head = head.Siguiente;
+                {   
+                    
+                    head = head.Siguiente;                                   
                     head.Anterior = null;
                     return;
                 }
-                Nodo h = head;
-
-                while (h.Anterior != null)
-                {
-                    if (h.Anterior.Dato == dato)
-                    {
-                        h.Anterior = h.Anterior.Anterior;
-                        return;
-                    }
-                    h = h.Anterior;
-                }
+                Nodo h = head;               
 
                 while (h.Siguiente != null)
                 {
                     if (h.Siguiente.Dato == dato)
                     {
                         h.Siguiente = h.Siguiente.Siguiente;
+                        h.Siguiente.Anterior = h;
                         return;
                     }
                     h = h.Siguiente;
@@ -128,7 +104,6 @@ namespace Lista_Doblemente_Enlazada
                 h = h.Siguiente;
                 while (h != null)
                 {
-                    //lista += h.ToString() + ",";
                     lista += "," + h.ToString();
 
                     h = h.Siguiente;
@@ -154,7 +129,6 @@ namespace Lista_Doblemente_Enlazada
                         return true;
                     }
                     h = h.Siguiente;
-                    //h.Siguiente.Anterior = h.Anterior.Siguiente;
                 }
             }
             return false;
