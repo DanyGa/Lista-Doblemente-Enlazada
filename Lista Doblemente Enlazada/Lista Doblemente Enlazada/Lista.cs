@@ -114,7 +114,6 @@ namespace Lista_Doblemente_Enlazada
             {
                 return "La lista esta vacia";
             }
-
         }
 
         public bool BuscarDato(int a)
