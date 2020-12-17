@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 
 namespace Lista_Doblemente_Enlazada
 {
@@ -85,7 +84,10 @@ namespace Lista_Doblemente_Enlazada
                     if (h.Siguiente.Dato == dato)
                     {
                         h.Siguiente = h.Siguiente.Siguiente;
-                        h.Siguiente.Anterior = h;
+                        if (h.Siguiente != null)
+                        {
+                            h.Siguiente.Anterior = h;
+                        }
                         return;
                     }
                     h = h.Siguiente;
@@ -144,18 +146,6 @@ namespace Lista_Doblemente_Enlazada
                 h = h.Siguiente;
             }
             return contador;
-        }
-
-        public void Guardar(string Ruta, string Datos)
-        {
-            if (File.Exists(Ruta))
-            {
-                File.Delete(Ruta);
-            }
-            using (StreamWriter sw = File.CreateText(Ruta))
-            {
-                sw.WriteLine(Datos);
-            }
-        }
+        }        
     }
 }
